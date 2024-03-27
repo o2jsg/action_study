@@ -14,13 +14,35 @@
             margin-top: 1000px;
             color: white;
             text-align: center;
+            opacity: 0;
+            transition: all 0.5;
         }
     </style>
 </head>
 <body>
-    <div><h1>iPhone 16</h1></div>
+    <div><h1>iPhone 16 출시</h1></div>
     <div><h1>충전포트 USB-C에서</h1></div>
     <div><h1>무선충전으로 포트제거</h1></div>
-    <div><img src="./images.jpg" alt=""></div>
+    <div><img src="./images.jpg" alt="" width="50%" height="50%"></div>
+    
+    <script>
+        let observer = new IntersectionObserver((e)=>{
+            e.forEach((box) => {
+                if(box.isIntersecting) {
+                    box.target.style.opacity = 1;
+                    box.target.style.transform = 'rotate(0deg)';
+                } else {
+                    box.target.style.opacity = 0;
+                }
+                box.intersectionRatio
+            })
+        })
+
+        let div = document.querySelectorAll('div')
+        observer.observe(div[0])
+        observer.observe(div[1])
+        observer.observe(div[2])
+        observer.observe(div[3])
+    </script>
 </body>
 </html>
